@@ -1,0 +1,115 @@
+Sending build context to Docker daemon  24.06kB
+Step 1/13 : from python:3.7-alpine
+ ---> ab6374cb8b8e
+Step 2/13 : workdir /app
+ ---> Running in 110c58a689f9
+Removing intermediate container 110c58a689f9
+ ---> 418c9c079f2f
+Step 3/13 : env FLASK_APP=app.py
+ ---> Running in 0c2c34f5584a
+Removing intermediate container 0c2c34f5584a
+ ---> 981b9e2146ae
+Step 4/13 : env FLASK_RUN_HOST=0.0.0.0
+ ---> Running in 0a36c265a529
+Removing intermediate container 0a36c265a529
+ ---> 49c9299e6510
+Step 5/13 : run apk add --no-cache gcc musl-dev linux-headers
+ ---> Running in 03a312e7d14b
+fetch https://dl-cdn.alpinelinux.org/alpine/v3.14/main/x86_64/APKINDEX.tar.gz
+fetch https://dl-cdn.alpinelinux.org/alpine/v3.14/community/x86_64/APKINDEX.tar.gz
+(1/13) Installing libgcc (10.3.1_git20210424-r2)
+(2/13) Installing libstdc++ (10.3.1_git20210424-r2)
+(3/13) Installing binutils (2.35.2-r2)
+(4/13) Installing libgomp (10.3.1_git20210424-r2)
+(5/13) Installing libatomic (10.3.1_git20210424-r2)
+(6/13) Installing libgphobos (10.3.1_git20210424-r2)
+(7/13) Installing gmp (6.2.1-r0)
+(8/13) Installing isl22 (0.22-r0)
+(9/13) Installing mpfr4 (4.1.0-r0)
+(10/13) Installing mpc1 (1.2.1-r0)
+(11/13) Installing gcc (10.3.1_git20210424-r2)
+(12/13) Installing linux-headers (5.10.41-r0)
+(13/13) Installing musl-dev (1.2.2-r3)
+Executing busybox-1.33.1-r3.trigger
+OK: 140 MiB in 48 packages
+Removing intermediate container 03a312e7d14b
+ ---> dbf3e01d8095
+Step 6/13 : run apk add --no-cache build-base
+ ---> Running in b87efcf108d8
+fetch https://dl-cdn.alpinelinux.org/alpine/v3.14/main/x86_64/APKINDEX.tar.gz
+fetch https://dl-cdn.alpinelinux.org/alpine/v3.14/community/x86_64/APKINDEX.tar.gz
+(1/8) Installing libmagic (5.40-r1)
+(2/8) Installing file (5.40-r1)
+(3/8) Installing libc-dev (0.7.2-r3)
+(4/8) Installing g++ (10.3.1_git20210424-r2)
+(5/8) Installing make (4.3-r0)
+(6/8) Installing fortify-headers (1.1-r1)
+(7/8) Installing patch (2.7.6-r7)
+(8/8) Installing build-base (0.5-r2)
+Executing busybox-1.33.1-r3.trigger
+OK: 209 MiB in 56 packages
+Removing intermediate container b87efcf108d8
+ ---> e0ae2d4b636f
+Step 7/13 : copy requirements.txt requirements.txt
+ ---> b57940949414
+Step 8/13 : copy app.py app.py
+ ---> 12ac76908069
+Step 9/13 : copy templates ./templates
+ ---> 0d39f936bc96
+Step 10/13 : copy static ./static
+ ---> 20f9aea469e2
+Step 11/13 : run pip install -r requirements.txt
+ ---> Running in 5a71e6764750
+Collecting flask
+  Downloading Flask-2.0.1-py3-none-any.whl (94 kB)
+Collecting flask_sqlalchemy
+  Downloading Flask_SQLAlchemy-2.5.1-py2.py3-none-any.whl (17 kB)
+Collecting Werkzeug>=2.0
+  Downloading Werkzeug-2.0.1-py3-none-any.whl (288 kB)
+Collecting Jinja2>=3.0
+  Downloading Jinja2-3.0.1-py3-none-any.whl (133 kB)
+Collecting itsdangerous>=2.0
+  Downloading itsdangerous-2.0.1-py3-none-any.whl (18 kB)
+Collecting click>=7.1.2
+  Downloading click-8.0.1-py3-none-any.whl (97 kB)
+Collecting SQLAlchemy>=0.8.0
+  Downloading SQLAlchemy-1.4.23.tar.gz (7.7 MB)
+Collecting importlib-metadata
+  Downloading importlib_metadata-4.8.1-py3-none-any.whl (17 kB)
+Collecting MarkupSafe>=2.0
+  Downloading MarkupSafe-2.0.1.tar.gz (18 kB)
+Collecting greenlet!=0.4.17
+  Downloading greenlet-1.1.1.tar.gz (85 kB)
+Collecting zipp>=0.5
+  Downloading zipp-3.5.0-py3-none-any.whl (5.7 kB)
+Collecting typing-extensions>=3.6.4
+  Downloading typing_extensions-3.10.0.2-py3-none-any.whl (26 kB)
+Building wheels for collected packages: MarkupSafe, SQLAlchemy, greenlet
+  Building wheel for MarkupSafe (setup.py): started
+  Building wheel for MarkupSafe (setup.py): finished with status 'done'
+  Created wheel for MarkupSafe: filename=MarkupSafe-2.0.1-cp37-cp37m-linux_x86_64.whl size=15287 sha256=f42589fa2815951287998f63db55230fd1ab61356b1cee7568970ccfde9f6d78
+  Stored in directory: /root/.cache/pip/wheels/1a/18/04/e3b5bd888f000c2716bccc94a565239f9defc47ef93d9e7bea
+  Building wheel for SQLAlchemy (setup.py): started
+  Building wheel for SQLAlchemy (setup.py): finished with status 'done'
+  Created wheel for SQLAlchemy: filename=SQLAlchemy-1.4.23-cp37-cp37m-linux_x86_64.whl size=1496779 sha256=ff5c0d8d802d88e78e631f87aee775c71e71bb9b8ac505aca56d3f83ee3fd74f
+  Stored in directory: /root/.cache/pip/wheels/98/25/2b/e4fa43abaa122024827ed5b16c2f3f5067ddb1fdb9db9941e0
+  Building wheel for greenlet (setup.py): started
+  Building wheel for greenlet (setup.py): finished with status 'done'
+  Created wheel for greenlet: filename=greenlet-1.1.1-cp37-cp37m-linux_x86_64.whl size=89598 sha256=51fe193c523a4979f6939af7336ba083fbe640e807bef8053f299693284d0072
+  Stored in directory: /root/.cache/pip/wheels/80/65/21/61ad32cad2988e9b5cb1b78e487d1d9c4e93dd588002cbcd23
+Successfully built MarkupSafe SQLAlchemy greenlet
+Installing collected packages: zipp, typing-extensions, MarkupSafe, importlib-metadata, Werkzeug, Jinja2, itsdangerous, greenlet, click, SQLAlchemy, flask, flask-sqlalchemy
+Successfully installed Jinja2-3.0.1 MarkupSafe-2.0.1 SQLAlchemy-1.4.23 Werkzeug-2.0.1 click-8.0.1 flask-2.0.1 flask-sqlalchemy-2.5.1 greenlet-1.1.1 importlib-metadata-4.8.1 itsdangerous-2.0.1 typing-extensions-3.10.0.2 zipp-3.5.0
+[91mWARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+[0mRemoving intermediate container 5a71e6764750
+ ---> 88dba3b23e8f
+Step 12/13 : expose 5000
+ ---> Running in 30eb2c71d758
+Removing intermediate container 30eb2c71d758
+ ---> 65d9c6fbc117
+Step 13/13 : cmd ["flask", "run"]
+ ---> Running in 454c613a296a
+Removing intermediate container 454c613a296a
+ ---> 41b23fd8e6d0
+Successfully built 41b23fd8e6d0
+Successfully tagged demo:latest
